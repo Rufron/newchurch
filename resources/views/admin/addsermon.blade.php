@@ -350,7 +350,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
@@ -386,20 +386,9 @@
 
 
                         <div class="card-body">
-                            <h2>Events</h2>
+                        <!-- add-sermon.blade.php -->
 
-                            <!-- Event List -->
-                            <ul>
-                                {{-- @foreach($events as $event)
-                                    <li>
-                                        {{ $event->title }}
-                                        <a href="{{ route('events.show', $event->id) }}">View Event</a>
-                                    </li>
-                                @endforeach --}}
-                            </ul>
-
-                            <!-- Event Creation Form -->
-                            <form method="POST" action="{{ route('admin.events.store') }}">
+                            <form method="POST" action="{{ route('addsermon.store') }}">
                                 @csrf
 
                                 <div class="form-group">
@@ -413,38 +402,29 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="time">Time:</label>
-                                    <input type="time" class="form-control" id="time" name="time" required>
+                                    <label for="text">Text:</label>
+                                    <textarea class="form-control" id="text" name="text" required></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="location">Location:</label>
-                                    <input type="text" class="form-control" id="location" name="location" required>
+                                    <label for="notes">Notes:</label>
+                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="description">Description:</label>
-                                    <textarea class="form-control" id="description" name="description" required></textarea>
+                                    <label for="author">Author:</label>
+                                    <input type="text" class="form-control" id="author" name="author" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="image">Image:</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
-                                </div>
-
-
-
-                                <button type="submit" class="btn btn-primary">Create Event</button>
-
+                                <button type="submit" class="btn btn-primary">Add Sermon</button>
 
                                 @if (session('success'))
-                                <div class="bg-green-200 text-green-900 p-3 mb-5 rounded-lg">
+                                <div class="alert alert-success">
                                     {{ session('success') }}
                                 </div>
                                 @endif
+
                             </form>
-
-
                     </div>
 
                     <!-- Content Row -->
