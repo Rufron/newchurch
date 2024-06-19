@@ -15,7 +15,7 @@ class EventController extends Controller
         return view('admin.events', compact('events'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Event $event)
     {
 
 
@@ -41,10 +41,40 @@ class EventController extends Controller
             'image' => $imagePath,
         ]);
 
-
+        // Update the event
+        // $event->update($validatedData);
 
         // Redirect to a success page or the event list
         return redirect()->route('events')->with('success');
+    }
+
+    // this facilitates the edit function.
+    public function edit($event)
+    {
+      $events = Event::find($event);
+      return view ('admin.edit', compact('events'));
+    }
+
+    // Update the events table
+    public function update(Request $request,$event)
+    {
+        $events = Event::find($event);
+        // $events->title = $request->input('title');
+        // $events->date = $request->input('date');
+        // $events->time = $request->input('time');
+        // $events->location = $request->input('location');
+        // $events->description = $request->input('description');
+        // $events->image = $request->input('image');
+        $events->update();
+        // return view ('admin.edit', compact('events'));
+        return redirect()->route('events');
+    }
+
+    // Defining the destroy Method
+    public function destroy(Event $event)
+    {
+        $event->delete();
+        return redirect()->route('events');
     }
 
 

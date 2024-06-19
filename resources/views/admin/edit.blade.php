@@ -386,103 +386,64 @@
 
 
                         <div class="card-body">
-                            <h2>Events</h2>
+                            <h2>Events Edit</h2>
                             {{-- table to display and edit and delete the ready events --}}
 
 
 
                             <!-- Event List -->
-                            <ul>
-                                {{-- @foreach($events as $event)
-                                    <li>
-                                        {{ $event->title }}
-                                        <a href="{{ route('events', $event->id) }}">View Event</a>
-                                    </li>
-                                @endforeach --}}
 
-                                {{-- display the table --}}
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                            <th>Location</th>
-                                            <th>Actions</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody>
-                                        @foreach($events as $event)
-                                            <tr>
-                                                <td>{{ $event->title}}</td>
-                                                <td>{{ $event->date}}</td>
-                                                <td>{{ $event->location}}</td>
-
-                                                <td>
-                                                {{-- edit button --}}
-                                                <a href="{{route('events.edit', $event->id)}}" class="btn btn-primary">Edit</a>
-                                                {{-- Delete Button --}}
-                                                <form action={{route('events.destroy', $event->id) }} method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                                        </ul>
 
                             <!-- Event Creation Form -->
-                            <form method="POST" action="{{ route('admin.events.store') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ url('events', $events->event) }}" enctype="multipart/form-data">
                                 @csrf
+                                {{-- @method('PUT') --}}
                                 <div class="form-group">
                                     <label for="title">Title:</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
+                                    <input type="text" class="form-control" value="{{ $events->title}}" id="title" name="title" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="date">Date:</label>
-                                    <input type="date" class="form-control" id="date" name="date" required>
+                                    <input type="date" class="form-control" value="{{ $events->date}}" id="date" name="date" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="time">Time:</label>
-                                    <input type="time" class="form-control" id="time" name="time" required>
+                                    <input type="time" class="form-control" value="{{ $events->time}}" id="time" name="time" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="location">Location:</label>
-                                    <input type="text" class="form-control" id="location" name="location" required>
+                                    <input type="text" class="form-control" value="{{ $events->location}}" id="location" name="location" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description:</label>
-                                    <textarea class="form-control" id="description" name="description" required></textarea>
+                                    <textarea class="form-control" value="{{ $events->description}}"   id="description" name="description" required></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="image">Image:</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
+                                    <input type="file" value="{{ $events->image}}" class="form-control" id="image" name="image" required>
                                 </div>
 
 
 
-                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Create Event</button>
+                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Update</button>
 
                                  <!-- Modal Dialog  for a succesful registration!!-->
                                  <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="create-event-modal-label" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="create-event-modal-label">New Event Created!</h5>
+                                                <h5 class="modal-title" id="create-event-modal-label">Current Event Updated</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                A new event has been successfully created.
+                                                You have updated the Event.
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

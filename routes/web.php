@@ -38,15 +38,6 @@ Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])-
 
 // Route for the MemberInterface views.
 Route::get('/admin/memberinterface', [MemberInterfaceController::class, 'show'])->name('memberinterface');
-// Route for the Events views.
-// Route::get('/admin/events',  [EventsController::class, 'index'])->name('events');
-
-
-// Route to the events store.
-// Route::post('/admin/events', [EventsController::class, 'store'])->name('admin.events.store');
-// Route::namespace('Admin')->group(function () {
-//     Route::name('admin.events.store')->post('/events', [EventsController::class, 'store']);
-// });
 
 // Route for the Events views.
 Route::get('/admin/events',  [EventController::class, 'index'])->name('events');
@@ -54,6 +45,17 @@ Route::get('/admin/events',  [EventController::class, 'index'])->name('events');
 // Route to the events store.
 Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
 
+// Route to facilitate the edit of an event.
+Route::get('admin/events/{event}', [EventController::class, 'edit'])->name('events.edit');
+
+// Route to update the elements
+Route::post('admin/events/{event}', [EventController::class, 'update'])->name('events');
+
+// Route to the edit event
+// Route::get('admin/events/{event}/edit', [EventController::class, 'edit'])->name('edit');
+
+// Route to delete an Event
+Route::delete('admin/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 //Route to the addsermons.php
 Route::get('/admin/addsermon', [AddSermonController::class, 'index'])->name('addsermon');
 Route::post('/admin/addsermon', [AddSermonController::class, 'store'])->name('addsermon.store');
