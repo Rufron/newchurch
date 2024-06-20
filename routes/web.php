@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminInterfaceController;
 use App\Http\Controllers\Admin\MemberInterfaceController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddSermonController;
+use App\Http\Controllers\Admin\AddPastorController;
 
 Route::get('/', function () {
     return view('home');
@@ -49,7 +50,7 @@ Route::post('/admin/events', [EventController::class, 'store'])->name('admin.eve
 Route::get('admin/events/{event}', [EventController::class, 'edit'])->name('events.edit');
 
 // Route to update the elements
-Route::post('admin/events/{event}', [EventController::class, 'update'])->name('events');
+Route::put('admin/events/{event}', [EventController::class, 'update'])->name('events');
 
 // Route to the edit event
 // Route::get('admin/events/{event}/edit', [EventController::class, 'edit'])->name('edit');
@@ -59,4 +60,8 @@ Route::delete('admin/events/{event}', [EventController::class, 'destroy'])->name
 //Route to the addsermons.php
 Route::get('/admin/addsermon', [AddSermonController::class, 'index'])->name('addsermon');
 Route::post('/admin/addsermon', [AddSermonController::class, 'store'])->name('addsermon.store');
+// Route to display the Admin pastors view
+Route::get('/admin/addpastor',  [AddPastorController::class, 'index'])->name('addpastor');
 
+// Route to add pastors
+Route::post('admin/addpastor', [AddPastorController::class, 'store'])->name('addpastors.store');

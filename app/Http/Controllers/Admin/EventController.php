@@ -59,12 +59,12 @@ class EventController extends Controller
     public function update(Request $request,$event)
     {
         $events = Event::find($event);
-        // $events->title = $request->input('title');
-        // $events->date = $request->input('date');
-        // $events->time = $request->input('time');
-        // $events->location = $request->input('location');
-        // $events->description = $request->input('description');
-        // $events->image = $request->input('image');
+        $events->title = $request->input('title');
+        $events->date = $request->input('date');
+        $events->time = $request->input('time');
+        $events->location = $request->input('location');
+        $events->description = $request->input('description');
+        $events->image = $request->input('image');
         $events->update();
         // return view ('admin.edit', compact('events'));
         return redirect()->route('events');

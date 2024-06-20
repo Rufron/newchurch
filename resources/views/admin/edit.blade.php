@@ -358,24 +358,6 @@
                     <!-- Content Row -->
                     <div class="row">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
 
                     <!-- Content Row -->
@@ -395,9 +377,9 @@
 
 
                             <!-- Event Creation Form -->
-                            <form method="POST" action="{{ url('events', $events->event) }}" enctype="multipart/form-data">
+                            <form method="PUT" action="{{ route('events', $events->id) }}" enctype="multipart/form-data">
                                 @csrf
-                                {{-- @method('PUT') --}}
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="title">Title:</label>
                                     <input type="text" class="form-control" value="{{ $events->title}}" id="title" name="title" required>
@@ -463,8 +445,6 @@
 
                                 @endif
                             </form>
-
-
                     </div>
 
                     <!-- Content Row -->

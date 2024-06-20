@@ -111,14 +111,14 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{url ('admin/addsermon')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Sermons</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{url ('admin/addpastor')}}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pastors</span></a>
             </li>
