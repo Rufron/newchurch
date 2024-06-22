@@ -4,7 +4,7 @@
  * Email: yans_fied[at]yahoo.com
  * Url: http://www.ariona.net
  */
-/*=========================================== 
+/*===========================================
  * Importing CSS Libraries
  *===========================================*/
 article,
@@ -46,7 +46,13 @@ textarea {
   font-family: sans-serif; }
 
 body {
-  margin: 0; }
+  margin: 0;
+  background-color: #999; /* light gray background color */
+  }
+
+  .site-header {
+    background-color: #666; /* Medium gray */
+  }
 
 a {
   background: transparent; }
@@ -1423,8 +1429,8 @@ form input[type="submit"], form button, form input[type="reset"] {
   .seremon-list.large .seremon-meta .pastor, .seremon-list.large .seremon-meta .date {
     display: inline-block;
     margin-right: 20px; }
-
-.family {
+/* edited family css */
+/* .family {
   width: 33.333%;
   float: left;
   padding: 0 15px;
@@ -1445,7 +1451,66 @@ form input[type="submit"], form button, form input[type="reset"] {
     margin-bottom: 5px;
     font-size: 14px;
     font-size: 1em;
-    font-weight: 600; }
+    font-weight: 600; } */
+
+
+
+/* new css family */
+    /* target the event container */
+.family {
+    display: flex; /* arrange elements side-by-side */
+    align-items: center; /* vertical alignment */
+    margin-bottom: 20px; /* add space between events */
+    border-bottom: 1px solid #ccc; /* add a light border at the bottom */
+    padding-bottom: 10px; /* add space below the border */
+  }
+
+  /* style the event image */
+  .family-image {
+    width: 100px; /* set a fixed width for the image */
+    height: auto; /* maintain image proportions */
+    margin-right: 20px; /* add space to the right of the image */
+    object-fit:cover;
+}
+
+.family-details {
+    position: absolute; /* absolute positioning for layering */
+    top: 0; /* position at the top */
+    left: 0; /* start from the left */
+    width: 100%; /* full width of the event container */
+    padding: 10px; /* add padding for content */
+    color: #fff; /* white text color */
+    opacity: 0; /* hide initially */
+    transition: all 0.3s ease-in-out; /* transition for hover effect */
+    text-align: center; /* center text alignment */
+  }
+
+  /* style the event title */
+  .family-name {
+    font-weight: bold; /* make title bold */
+    margin-bottom: 5px; /* add space below title */
+  }
+
+  /* style the event date */
+  .family-name small {
+    color: #aaa; /* make date text lighter gray */
+  }
+
+  /* hover effect for event container */
+.family:hover {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* more prominent shadow on hover */
+    .family-details {
+      opacity: 1; /* reveal event details on hover */
+    }
+    .family-image {
+      filter: brightness(0.8); /* reduce image brightness on hover */
+    }
+  }
+
+.card-body {
+    color: rgb(82, 59, 30);
+}
+
 
 .sidebar .widget {
   margin-bottom: 40px; }

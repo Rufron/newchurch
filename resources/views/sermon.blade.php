@@ -61,15 +61,17 @@
 								<h2 class="section-title">Upcoming seremons</h2>
 								<ul class="seremon-list large">
 									<li>
-										<img src="images/thumb-1-120.png" alt="">
-										<div class="seremon-detail">
-											<h3 class="seremon-title"><a href="#">I believe in god with all my heart</a></h3>
-											<div class="seremon-meta">
-												<div class="pastor"><i class="fa fa-user"></i> Alan Ray</div>
-												<div class="date"><i class="fa fa-calendar"></i> 18 mar 2014</div>
-											</div>
-											<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam molestiae doloribus deserunt minus a dicta labore beatae maiores assumenda. Laudantium nihil, maxime molestiae soluta doloribus magnam eum. Nesciunt, ea, sint.</p>
-										</div>
+                                        @foreach ($add_sermons as $add_sermon )
+                                                <div class="seremon-detail">
+                                                    <img src="images/thumb-1-120.png" alt="">
+                                                    <h3 class="seremon-title"><a href="#">{{$add_sermon->title}}</a></h3>
+                                                    <div class="seremon-meta">
+                                                        <div class="pastor"><i class="fa fa-user"></i> {{$add_sermon->author}}</div>
+                                                        <div class="date"><i class="fa fa-calendar"></i> {{$add_sermon->date}}</div>
+                                                    </div>
+                                                    <p>{{$add_sermon->notes}}</p>
+                                                </div>
+                                        @endforeach
 									</li>
 									<li>
 										<img src="images/thumb-2-120.jpg" alt="">

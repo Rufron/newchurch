@@ -35,6 +35,12 @@ Route::get('/pastor', [ChurchController::class, 'pastor'])->name('pastor');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
 
+// route to display the events function.
+Route::get('/events', [EventController::class, 'userindex'])->name('events');
+
+// route to display the sermons
+Route::get('/sermon', [AddSermonController::class, 'userindex'])->name('addsermon');
+
 
 
 // Route for the MemberInterface views.

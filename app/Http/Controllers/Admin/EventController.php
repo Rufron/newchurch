@@ -15,6 +15,13 @@ class EventController extends Controller
         return view('admin.events', compact('events'));
     }
 
+    public function userindex(Request $request){
+        $events = Event::all();
+        return view('events', compact('events'));
+    }
+
+
+
     public function store(Request $request, Event $event)
     {
 

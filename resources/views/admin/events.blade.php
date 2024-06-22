@@ -359,23 +359,6 @@
                     <div class="row">
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     </div>
 
                     <!-- Content Row -->
@@ -418,7 +401,7 @@
                                                 <td>{{ $event->date}}</td>
                                                 <td>{{ $event->location}}</td>
 
-                                                <td>
+                                                <td class="p-3 px-5">
                                                 {{-- edit button --}}
                                                 <a href="{{route('events.edit', $event->id)}}" class="btn btn-primary">Edit</a>
                                                 {{-- Delete Button --}}

@@ -15,6 +15,11 @@ class AddSermonController extends Controller
         return view('admin/addsermon');
     }
 
+    public function userindex()
+    {   $add_sermons = AddSermon::all();
+        return view('sermon', compact('add_sermons'));
+    }
+
     public function store(Request $request)
     {
 

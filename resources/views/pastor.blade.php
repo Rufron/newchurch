@@ -42,14 +42,13 @@
 							<li class="menu-item"><a href="{{url('/contact')}}">Contact <small>lorem ipsum</small></a></li>
 						</ul>
 					</div>
-
 					<div class="mobile-navigation"></div>
 				</div>
 			</header> <!-- .site-header -->
 
 			<div class="page-head" data-bg-image="images/page-head-1.jpg">
 				<div class="container">
-					<h2 class="page-title">Families</h2>
+					<h2 class="page-title">Pastors</h2>
 				</div>
 			</div>
 
@@ -58,55 +57,15 @@
 					<div class="container">
 						<div class="row">
 							<div class="content col-md-8">
-								<h2 class="section-title">choose a family to see details</h2>
-								<div class="row">
+								<h2 class="section-title">See our Church pastors.</h2>
+								<div>
 									<div class="family">
 										<img src="images/family-1.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-2.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-3.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-4.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-5.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-6.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-7.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-8.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
-									</div>
-									<div class="family">
-										<img src="images/family-9.jpg" alt="" class="family-image">
-										<h3 class="family-name">Smith</h3>
-										<small>John, Anna, Patrick, Susan</small>
+										<h3 class="family-name">Name</h3>
+										<h4>Role</h4>
+                                        <p>Message</p>
 									</div>
 								</div>
-
 							</div>
 							<div class="sidebar col-md-3 col-md-offset-1">
 								<div class="widget">
