@@ -15,6 +15,11 @@ class AddPastorController extends Controller
         return view('admin.addpastor');
     }
 
+    public function userindex()
+    {   $add_pastors = AddPastor::all();
+        return view('pastor', compact('add_pastors'));
+    }
+
     public function store(Request $request)
 {
     $pastor = AddPastor::create([

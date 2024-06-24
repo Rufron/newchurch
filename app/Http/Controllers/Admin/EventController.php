@@ -20,6 +20,11 @@ class EventController extends Controller
         return view('events', compact('events'));
     }
 
+    public function blogindex(Request $request){
+        $events = Event::all();
+        return view('blog', compact('events'));
+    }
+
 
 
     public function store(Request $request, Event $event)

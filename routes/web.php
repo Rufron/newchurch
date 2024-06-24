@@ -41,6 +41,12 @@ Route::get('/events', [EventController::class, 'userindex'])->name('events');
 // route to display the sermons
 Route::get('/sermon', [AddSermonController::class, 'userindex'])->name('addsermon');
 
+// route to display the pastors
+Route::get('/pastor', [AddPastorController::class, 'userindex'])->name('addpastor');
+
+// route to display blogs
+Route::get('/blog', [EventController::class, 'blogindex'])->name('events');
+
 
 
 // Route for the MemberInterface views.
