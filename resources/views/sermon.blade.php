@@ -44,7 +44,7 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masterhead1">
             {{-- <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
@@ -85,9 +85,9 @@
 
                                             <div class="col-lg-6 " data-aos="fade-up" data-aos-delay="100">
                                             <div class="service-item d-flex">
-                                                <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
+                                                <div class="icon flex-shrink-0"><i class="bi bi-book"></i></div>
                                                 <div>
-                                                <h4 class="title"><a href="services-details.html" class="stretched-link">{{$add_sermon->title}}</a></h4>
+                                                <h4 class="title"><a href="#" class="stretched-link">{{$add_sermon->title}}</a></h4>
                                                 <p class="description">{{$add_sermon->date}}</p>
                                                 <p class="description">{{$add_sermon->text}}</p>
                                                 <p class="description">{{$add_sermon->notes}}</p>

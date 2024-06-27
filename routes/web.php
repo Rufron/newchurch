@@ -77,3 +77,7 @@ Route::get('/admin/addpastor',  [AddPastorController::class, 'index'])->name('ad
 
 // Route to add pastors
 Route::post('admin/addpastor', [AddPastorController::class, 'store'])->name('addpastors.store');
+
+// Route to add new admins
+Route::get('/admin/newadmin', [AdminController::class, 'adminindex'])->name('admininterface.newadmin');
+Route::post('/admin/newadmin', [AdminController::class, 'store'])->name('newadmin.store');

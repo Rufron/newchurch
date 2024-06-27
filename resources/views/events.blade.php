@@ -44,7 +44,7 @@
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead">
+        <header class="masterhead">
             {{-- <div class="container px-4 px-lg-5 h-100">
                 <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
                     <div class="col-lg-8 align-self-end">
@@ -164,6 +164,7 @@
 
                                         <div class="d-flex align-items-center">
                                         <img src="https://images.pexels.com/photos/976866/pexels-photo-976866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" class="img-fluid post-author-img flex-shrink-0">
+
                                         <div class="post-meta">
                                             <p class="post-author">{{$event->location}}</p>
                                             <p class="post-date">

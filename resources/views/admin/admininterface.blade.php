@@ -379,7 +379,7 @@
                                                 Total Admins</div>
 
                                                 {{-- this one now displays the total admin no !! --}}
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">7</div>
+                                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalAdmins }}</div>
 
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
@@ -401,13 +401,13 @@
                                                Add new Admin</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <!-- Button Example -->
-                                                    {{-- <a href="#" class="btn btn-square btn-primary">
+                                                    <a href="{{ route('admininterface.newadmin') }}" class="btn btn-square btn-primary" data-toggle="modal" data-target="#addPersonModal">
                                                         <i class="fas fa-check">Add</i>
-                                                    </a> --}}
-                                                    <button type="button" class="btn btn-square btn-primary" data-toggle="modal" data-target="#addPersonModal">
+                                                    </a>
+                                                    {{-- <button type="button" class="btn btn-square btn-primary" data-toggle="modal" data-target="#addPersonModal">
                                                         <i class="fas fa-check"></i>
                                                         Add
-                                                    </button>
+                                                    </button> --}}
 
                                                         <!-- Modal -->
                                                         <div class="modal fade" id="addPersonModal" tabindex="-1" role="dialog" aria-labelledby="addPersonModalLabel" aria-hidden="true">
@@ -441,7 +441,7 @@
                             </div>
                         </div>
 
-                        <!-- Del Admin action Card Example -->
+                        {{-- <!-- Del Admin action Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -490,10 +490,10 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
-                        <!-- Modify Card Example -->
+                        {{-- <!-- Modify Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -506,7 +506,7 @@
                                                 {{-- <a href="#" class="btn btn-square btn-primary">
                                                     <i class="fas fa-check">Modify</i>
                                                 </a> --}}
-                                                <!-- Modify Button -->
+                                                {{-- <!-- Modify Button -->
                                                 <button type="button" class="btn btn-square btn-primary" data-toggle="modal" data-target="#modifyModal">
                                                     <i class="fas fa-check"></i>
                                                     Modify
@@ -541,7 +541,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
 
@@ -574,29 +574,18 @@
                                         <th> </th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Role</th>
+
                                     </tr>
                                     {{-- table to actually display the content... --}}
-                                    <tr>
-                                        <div class="container">
-
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Pastor Michael</td>
-                                                    <td>pstmichael@gmail.com</td>
-                                                    <td>Pastor</td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td>Reverend Japeth</td>
-                                                    <td>Japheth@gmail.com</td>
-                                                    <td>Reverend</td>
-                                                </tr>
-
-
-                                        </div>
-                                    </tr>
+                                    @foreach ($admins as $admin )
+                                        <tr>
+                                            <div class="container">
+                                                <td>{{ $admin->id }}</td>
+                                                <td>{{ $admin->name }}</td>
+                                                <td>{{ $admin->email }}</td>
+                                            </div>
+                                        </tr>
+                                    @endforeach
 
 
 
