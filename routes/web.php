@@ -47,6 +47,13 @@ Route::get('/pastor', [AddPastorController::class, 'userindex'])->name('addpasto
 // route to display blogs
 Route::get('/blog', [EventController::class, 'blogindex'])->name('events');
 
+// Route to display the login page
+Route::get('/login', [AdminController::class, 'add'])->name('login');
+
+
+
+
+
 
 
 // Route for the MemberInterface views.
@@ -63,10 +70,6 @@ Route::get('admin/events/{event}', [EventController::class, 'edit'])->name('even
 
 // Route to update the elements
 Route::put('admin/events/{event}', [EventController::class, 'update'])->name('events');
-
-// Route to the edit event
-// Route::get('admin/events/{event}/edit', [EventController::class, 'edit'])->name('edit');
-
 // Route to delete an Event
 Route::delete('admin/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 //Route to the addsermons.php
@@ -79,5 +82,9 @@ Route::get('/admin/addpastor',  [AddPastorController::class, 'index'])->name('ad
 Route::post('admin/addpastor', [AddPastorController::class, 'store'])->name('addpastors.store');
 
 // Route to add new admins
-Route::get('/admin/newadmin', [AdminController::class, 'adminindex'])->name('admininterface.newadmin');
+Route::get('admin/newadmin', [AdminInterfaceController::class, 'add'])->name('admininterface.newadmin');
 Route::post('/admin/newadmin', [AdminController::class, 'store'])->name('newadmin.store');
+
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -45,21 +45,6 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    {{-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> --}}
-
-
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -69,30 +54,12 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="{{route('admininterface')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>Home</a>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     </div>
 
@@ -110,51 +77,6 @@
 
 
                             <!-- Event List -->
-                            <ul>
-
-                                {{-- display the table --}}
-                                {{-- <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Date</th>
-                                            <th>Location</th>
-                                            <th>Actions</th>
-                                        </tr>
-
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table> --}}
-                                        </ul>
-
-                            <!-- Event Creation Form -->
-                            {{-- <form method="POST" action="{{ route('addpastors.store') }}" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="name">Name:</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="role">Role:</label>
-                                    <input type="text" class="form-control" id="role" name="role" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="message">Message:</label>
-                                    <textarea class="form-control" id="message" name="message" required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">Image:</label>
-                                    <input type="file" class="form-control" id="image" name="image" required>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Save Pastor</button> --}}
-
-
                                 <form action="{{ route('newadmin.store') }}" method="POST">
                                     @csrf
                                     <div class="modal-body">

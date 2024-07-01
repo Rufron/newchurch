@@ -18,10 +18,10 @@ class AdminController extends Controller
     }
 
 
-    public function adminindex()
+    public function add()
     {
-        $admins = Admin::all();
-        return view('admin.newadmin', compact('admins'));
+
+        return view('admin.login');
     }
 
     public function store(Request $request)

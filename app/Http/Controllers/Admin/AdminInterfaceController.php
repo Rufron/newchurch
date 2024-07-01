@@ -18,5 +18,11 @@ class AdminInterfaceController extends Controller
         return view('admin.admininterface', compact('admins','totalAdmins'));
     }
 
+    public function add()
+    {
+
+        return view('admin.newadmin');
+    }
+
 
 }
