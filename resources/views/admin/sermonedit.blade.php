@@ -334,8 +334,7 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
-                        <a href={{url("/admin/addsermon/sermonview")}}  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> View current sermons</a>
+                        <a href={{url("/admin/addsermon/sermonview")}}  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
                     </div>
 
                     <!-- Content Row -->
@@ -371,27 +370,27 @@
                         <div class="card-body">
                         <!-- add-sermon.blade.php -->
 
-                            <form method="POST" action="{{ route('addsermon.store') }}">
+                            <form method="POST" action="{{ route('sermons.update', $add_sermons->id)}}">
                                 @csrf
-
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="title">Title:</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
+                                    <input type="text" class="form-control" value="{{ $add_sermons->title}}" id="title" name="title" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="date">Date:</label>
-                                    <input type="date" class="form-control" id="date" name="date" required>
+                                    <input type="date" class="form-control" value="{{ $add_sermons->date}}" id="date" name="date" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="text">Text:</label>
-                                    <textarea class="form-control" id="text" name="text" required></textarea>
+                                    <textarea class="form-control" value="{{ $add_sermons->text}}" id="text" name="text" required></textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="notes">Notes:</label>
-                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
+                                    <textarea class="form-control" value="{{ $add_sermons->notes}}" id="notes" name="notes" required></textarea>
                                 </div>
 
                                 <div class="form-group">

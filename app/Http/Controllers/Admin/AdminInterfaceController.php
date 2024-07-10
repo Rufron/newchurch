@@ -24,5 +24,30 @@ class AdminInterfaceController extends Controller
         return view('admin.newadmin');
     }
 
+    // this facilitates the edit function.
+    public function edit($admin)
+    {
+      $admins = Admin::find($admin);
+      return view ('admin.edits', compact('admins'));
+    }
+
+    // Defining the destroy Method
+    public function destroy(Admin $admin)
+    {
+        $admin->delete();
+        return redirect()->route('admininterface');
+    }
+
+    // Defining the Update Method
+        public function update(Request $request, Admin $admin)
+    {
+        $admin->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ]);
+
+        return redirect()->route('admininterface')->with('success', 'Admin updated successfully.');
+    }
+
 
 }

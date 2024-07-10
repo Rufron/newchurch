@@ -20,9 +20,11 @@
         {{-- another css code. --}}
         {{-- <link rel="stylesheet" href="style.css"> --}}
 
-        {{-- fontawesome code: --}}
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-F0sPsrC86mNsihWz+uTU7G9dW/sghggusZ2s1FYE5I0LbNB7m3i1BgO2vsrsUCUp8jCW2YlX6Pv2j4wuIuMNXg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
-
+       <!--Best icons so far that its working -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <!--this one is for the image slider-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -53,7 +55,7 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 mb-5">Welcome to True Church, a welcoming and inclusive community for spiritual growth, connection, and support, where everyone can find their place and purpose.</p>
-                        <a class="btn btn-primary btn-xl" href="#about">Contact us.</a>
+                        <a class="btn btn-primary btn-xl" href="{{url('/contact')}}">Contact us.</a>
                     </div>
                 </div>
             </div>
@@ -78,59 +80,6 @@
                 <hr class="divider" />
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-3 col-md-6 text-center">
-                        {{-- <div class="mt-5">
-                            <div class="mb-2"><i class="bi-gem fs-1 text-primary"></i></div>
-                            <h3 class="h4 mb-2">Sturdy Themes</h3>
-                            <p class="text-muted mb-0">Our themes are updated regularly to keep them bug free!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="mt-5">
-                            <div class="mb-2"><i class="bi-laptop fs-1 text-primary"></i></div>
-                            <h3 class="h4 mb-2">Up to Date</h3>
-                            <p class="text-muted mb-0">All dependencies are kept current to keep things fresh.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="mt-5">
-                            <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
-                            <h3 class="h4 mb-2">Ready to Publish</h3>
-                            <p class="text-muted mb-0">You can use this design as is, or you can make changes!</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="mt-5">
-                            <div class="mb-2"><i class="bi-heart fs-1 text-primary"></i></div>
-                            <h3 class="h4 mb-2">Made with Love</h3>
-                            <p class="text-muted mb-0">Is it really open source if it's not made with love?</p>
-                        </div>
-                    </div> --}}
-
-
-
-
-
-
-                    {{-- <section class="sermon-program">
-                        <h2>Sermon Program</h2>
-                        <ul class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
-                          <li>
-                            <h3>Date: Sunday, June 9, 2024</h3>
-                            <h4>Topic: Finding Strength in Difficult Times</h4>
-                            <p>Speaker: Pastor John Smith</p>
-                            <p>Scripture: Isaiah 40:29</p>
-                          </li>
-                          <li>
-                            <h3>Date: Sunday, June 16, 2024</h3>
-                            <h4>Topic: The Power of Forgiveness</h4>
-                            <p>Speaker: Guest Speaker, Sarah Jones</p>
-                            <p>Scripture: Matthew 6:14-15</p>
-                          </li>
-                        </ul>
-                      </section> --}}
-
-
-
 
 
                 </div>
@@ -139,18 +88,23 @@
             <h2 class="section-title">Latest sermons</h2>
             <div class="sermon-carousel">
                 <ul class="seremon-list">
-                    <li>
-                        <img src="images/small-thumb-1.jpg" alt="">
-                        <div class="seremon-detail">
-                            <h3 class="seremon-title"><a href="#">I believe in god with all my heart</a></h3>
-                            <div class="seremon-meta">
-                                <div class="pastor"><i class="fa fa-user"></i> Alan Ray</div>
-                                <div class="date"><i class="fa fa-calendar"></i> 18 mar 2014</div>
+                    {{-- @foreach ($add_sermons as $add_sermon )
+                        <li>
+                            <img src="https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-bible-gif-hd-wallpaper-image_2683159.jpg" alt="">
+                            <div class="seremon-detail">
+                                <h3 class="seremon-title"><a href="#">I believe in god with all my heart</a></h3>
+                                <div class="seremon-meta">
+                                    <div class="pastor"><i class="fa fa-user"></i> Alan Ray</div>
+                                    <div class="date"><i class="fa fa-calendar"></i> 18 mar 2014</div>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <img src="images/small-thumb-2.jpg" alt="">
+                        </li>
+                    @endforeach --}}
+
+
+
+                    {{-- <li>
+                        <img src="https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-bible-gif-hd-wallpaper-image_2683159.jpg" alt="">
                         <div class="seremon-detail">
                             <h3 class="seremon-title"><a href="#">Trusting in jesus and god</a></h3>
                             <div class="seremon-meta">
@@ -160,7 +114,7 @@
                         </div>
                     </li>
                     <li>
-                        <img src="images/small-thumb-3.jpg" alt="">
+                        <img src="https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-bible-gif-hd-wallpaper-image_2683159.jpg" alt="">
                         <div class="seremon-detail">
                             <h3 class="seremon-title"><a href="#">Love your kids</a></h3>
                             <div class="seremon-meta">
@@ -168,10 +122,47 @@
                                 <div class="date"><i class="fa fa-calendar"></i> 18 mar 2024</div>
                             </div>
                         </div>
-                    </li>
+                    </li> --}}
                 </ul>
-                <button class="carousel-btn prev" ><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-btn next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                {{-- <button class="carousel-btn prev" ><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fa fa-chevron-right" aria-hidden="true"></i></button> --}}
+            </div>
+            <div class="sermon-carousel">
+                <div class="sermon-intro">
+                    <p>Welcome to our collection of latest sermons, where faith meets everyday life. Each message is carefully crafted to inspire, encourage, and challenge you in your spiritual journey. Whether you're a long-time believer or just exploring faith, these sermons offer insights and wisdom for all.</p>
+
+                <ul class="seremon-list">
+
+
+                        <!-- Remember to delete these w3 school codes -->
+                         <!-- Slideshow container -->
+                    <div class="slideshow-container">
+                      @foreach ($add_sermons as $add_sermon )
+
+                        <!-- Full-width images with number and caption text -->
+                        <div class="mySlides fade">
+                        <div class="numbertext">{{$add_sermon->id}}</div>
+                        <img src="https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-bible-gif-hd-wallpaper-image_2683159.jpg" style="width:100%">
+                        <p class="textme">{{$add_sermon->title}}</p>
+                        <div class="text">{{$add_sermon->text}}</div>
+                        </div>
+
+                      @endforeach
+
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                    </div>
+                    <br>
+
+                    <!-- The dots/circles -->
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
+                </ul>
+            </div>
             </div>
         </section>
         <!-- Portfolio-->
@@ -268,7 +259,7 @@
         </section>
         <!-- Footer-->
         <footer class="bg-light py-5">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2023 - Company Name</div></div>
+            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2024 - Company Name</div></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -281,6 +272,10 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+        <!--image slider latest -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     </body>
 </html>
 

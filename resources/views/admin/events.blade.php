@@ -21,6 +21,25 @@
     <link rel="stylesheet" href="{{ asset('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css')}}" >
      <!-- icons i added later -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+     <!-- i added these to help with the table 1-->
+     <!-- Include the Tabulator CSS and JavaScript files -->
+    <link href="https://unpkg.com/tabulator-tables@5.2.3/dist/css/tabulator.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/tabulator-tables@5.2.3/dist/js/tabulator.min.js"></script>
+
+    <!-- i added these to help with the table 2-->
+    <!-- Include the Bootstrap Table CSS and JavaScript files -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+
+    <!-- i added these to help with the table 3-->
+    <!-- Include the DataTables CSS and JavaScript files -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+
+
 </head>
 
 <body id="page-top">
@@ -43,8 +62,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#">
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -83,9 +102,8 @@
             </div>
 
             <!-- Nav Item - Events Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url ('admin/events')}}" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('admin/events')}}">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Events</span>
                 </a>
@@ -133,7 +151,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    {{-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -144,12 +162,12 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        {{-- <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -288,7 +306,7 @@
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -298,7 +316,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ101E8pFB3rFg510zsDy7M0m1DZWX7qYjYg&s">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -345,7 +363,7 @@
                     </div>
 
                     <!-- Content Row -->
-                    {{-- where the contents should be placed.. --}}
+                    <!-- where the contents should be placed.. -->
                     <div class="row">
 
                         {{-- code starts here --}}
@@ -384,15 +402,17 @@
                                                 <td>{{ $event->date}}</td>
                                                 <td>{{ $event->location}}</td>
 
-                                                <td class="p-3 px-5">
-                                                {{-- edit button --}}
-                                                <a href="{{route('events.edit', $event->id)}}" class="btn btn-primary">Edit</a>
-                                                {{-- Delete Button --}}
-                                                <form action={{route('events.destroy', $event->id) }} method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
+                                                <td>
+                                                    <div class="d-flex justify-content-end">
+                                                        {{-- edit button --}}
+                                                        <a href="{{route('events.edit', $event->id)}}" class="btn btn-primary">Edit</a>
+                                                        {{-- Delete Button --}}
+                                                        <form action={{route('events.destroy', $event->id) }} method="POST" enctype="multipart/form-data">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -522,7 +542,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
                 </div>
             </div>
         </div>
@@ -544,7 +564,6 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
-
 
 
 </body>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\MemberInterfaceController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddSermonController;
 use App\Http\Controllers\Admin\AddPastorController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {
     return view('home');
@@ -35,8 +36,13 @@ Route::get('/pastor', [ChurchController::class, 'pastor'])->name('pastor');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
 
+
+
 // route to display the events function.
 Route::get('/events', [EventController::class, 'userindex'])->name('events');
+
+// route to display the sermons on the homepage.
+Route::get('/home', [HomeController::class, 'userindex'])->name('home');
 
 // route to display the sermons
 Route::get('/sermon', [AddSermonController::class, 'userindex'])->name('addsermon');
@@ -69,12 +75,22 @@ Route::post('/admin/events', [EventController::class, 'store'])->name('admin.eve
 Route::get('admin/events/{event}', [EventController::class, 'edit'])->name('events.edit');
 
 // Route to update the elements
-Route::put('admin/events/{event}', [EventController::class, 'update'])->name('events');
+Route::put('admin/events/{event}', [EventController::class, 'update'])->name('events.update');
 // Route to delete an Event
 Route::delete('admin/events/{event}', [EventController::class, 'destroy'])->name('events.destroy');
 //Route to the addsermons.php
 Route::get('/admin/addsermon', [AddSermonController::class, 'index'])->name('addsermon');
 Route::post('/admin/addsermon', [AddSermonController::class, 'store'])->name('addsermon.store');
+
+// Route to display the current sermons in admin
+Route::get('/admin/addsermon/sermonview', [AddSermonController::class, 'viewindex'])->name('viewsermon');
+
+// Im using a sample example.just incase it works!!
+// Route::get('/admin/addsermon/{addsermon}/edit', [AddSermonController::class, 'edit'])->name('sermons.edit');
+Route::get('/admin/addsermon/{sermon}/edit', [AddSermonController::class, 'edit'])->name('sermons.edit');
+Route::put('/admin/addsermon/{addsermon}', [AddSermonController::class, 'update'])->name('sermons.update');
+Route::delete('/admin/addsermon/{addsermon}', [AddSermonController::class, 'destroy'])->name('sermons.destroy');
+
 // Route to display the Admin pastors view
 Route::get('/admin/addpastor',  [AddPastorController::class, 'index'])->name('addpastor');
 
@@ -85,6 +101,11 @@ Route::post('admin/addpastor', [AddPastorController::class, 'store'])->name('add
 Route::get('admin/newadmin', [AdminInterfaceController::class, 'add'])->name('admininterface.newadmin');
 Route::post('/admin/newadmin', [AdminController::class, 'store'])->name('newadmin.store');
 
+// This one is to edit the admin.
+Route::get('/admin/{admin}/edit', [AdminInterfaceController::class, 'edit'])->name('admin.edit');
 
+// this one defines the destroy admin route.
+Route::delete('/admin/{admin}', [AdminInterfaceController::class, 'destroy'])->name('admin.destroy');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// This one updates the admin
+Route::put('/admin/{admin}', [AdminInterfaceController::class, 'update'])->name('admin.update');

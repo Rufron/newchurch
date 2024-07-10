@@ -68,19 +68,39 @@ class EventController extends Controller
     }
 
     // Update the events table
-    public function update(Request $request,$event)
-    {
-        $events = Event::find($event);
-        $events->title = $request->input('title');
-        $events->date = $request->input('date');
-        $events->time = $request->input('time');
-        $events->location = $request->input('location');
-        $events->description = $request->input('description');
-        $events->image = $request->input('image');
-        $events->update();
-        // return view ('admin.edit', compact('events'));
-        return redirect()->route('events');
+
+
+    public function update(Request $request, Event $event)
+{
+    $validatedData = $request->validate([
+        'title' => 'required',
+        'date' => 'required|date',
+        'time' => 'required',
+        'location' => 'required',
+        'description' => 'required',
+        'image' => 'nullable|image|max:2048',
+    ]);
+
+    if ($request->hasFile('image')) {
+
+        $imagePath = $request->file('image')->store('event_images', 'public');
+    } else {
+        $imagePath = $event->image;
     }
+
+    $event->update([
+        'title' => $validatedData['title'],
+        'date' => $validatedData['date'],
+        'time' => $validatedData['time'],
+        'location' => $validatedData['location'],
+        'description' => $validatedData['description'],
+        'image' => $imagePath,
+    ]);
+
+    return redirect()->route('events');
+}
+
+
 
     // Defining the destroy Method
     public function destroy(Event $event)

@@ -29,94 +29,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-            <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Admin Panel <sup>1</sup></div>
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Interface
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/admininterface')}}">
-                    <i class="fas fa-user fa-fw"></i>
-                    <span>Admin</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Members  Collapse Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url ('admin/memberinterface')}}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-users fa-fw"></i>
-                    <span>Members</span>
-                </a>
-            </li> --}}
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Church Program
-            </div>
-
-            <!-- Nav Item - Events -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/events')}}">
-                    <i class="fas fa-calendar-alt fa-fw"></i>
-                    <span>Events</span>
-                </a>
-
-            </li>
-
-            <!-- Nav Item - Sermons -->
-            <li class="nav-item active">
-                <a class="nav-link" href="{{url ('admin/addsermon')}}">
-                    <i class="fas fa-book-bible fa-fw"></i>
-                    <span>Sermons</span></a>
-            </li>
-
-            <!-- Nav Item - Pastors -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/addpastor')}}">
-                    <i class="fas fa-user-tie fa-fw"></i>
-                    <span>Pastors</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-
-
-        </ul>
-        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -334,15 +247,80 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
-                        <a href={{url("/admin/addsermon/sermonview")}}  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                class="fas fa-download fa-sm text-white-50"></i> View current sermons</a>
+                        <a href="{{route('addsermon')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i>
+                            Back</a>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
+                    <!--content for the sermons-->
+                    <ul>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th>Title</th>
+                                    <th>Bible Verse</th>
+                                    <th>Date</th>
+                                    <th>Author</th>
 
 
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                {{-- @foreach($add_sermons as $add_sermon)
+                                    <tr>
+                                        <td>{{ $add_sermon->id}}</td>
+                                        <td>{{ $add_sermon->title}}</td>
+                                        <td>{{ $add_sermon->text}}</td>
+                                        <td>{{ $add_sermon->date}}</td>
+                                        <td>{{$add_sermon->author}}</td>
+
+                                        <td>
+                                            <div class="d-flex justify-content-end">
+                                                <!-- edit button -->
+                                                <a href="{{route('#', $add_sermon->id)}}" class="btn btn-primary">Edit</a>
+
+                                                <!-- Delete Button -->
+                                                <form action={{route('#', $add_sermon->id) }} method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach --}}
+
+                                @foreach($add_sermons as $add_sermon)
+                                    <tr>
+                                        <td>{{ $add_sermon->id }}</td>
+                                        <td>{{ $add_sermon->title }}</td>
+                                        <td>{{ $add_sermon->text }}</td>
+                                        <td>{{ $add_sermon->date }}</td>
+                                        <td>{{ $add_sermon->author }}</td>
+                                        <td>
+                                            <div class="d-flex justify-content-end">
+                                                {{-- <button class="btn btn-primary edit-sermon" data-id="{{ $add_sermon->id }}">Edit</button> --}}
+                                                <a href="{{route('sermons.edit', $add_sermon->id)}}" class="btn btn-primary">Edit</a>
+                                                <form action="{{ route('sermons.destroy', $add_sermon->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                        @endforeach
+
+
+                                     </tbody>
+                        </table>
+
+                    </ul>
 
 
 
@@ -367,48 +345,6 @@
 
                         {{-- code starts here --}}
 
-
-                        <div class="card-body">
-                        <!-- add-sermon.blade.php -->
-
-                            <form method="POST" action="{{ route('addsermon.store') }}">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label for="title">Title:</label>
-                                    <input type="text" class="form-control" id="title" name="title" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="date">Date:</label>
-                                    <input type="date" class="form-control" id="date" name="date" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="text">Text:</label>
-                                    <textarea class="form-control" id="text" name="text" required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="notes">Notes:</label>
-                                    <textarea class="form-control" id="notes" name="notes" required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="author">Author:</label>
-                                    <input type="text" class="form-control" id="author" name="author" required>
-                                </div>
-
-                                <button type="submit" class="btn btn-primary">Add Sermon</button>
-
-                                @if (session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                                @endif
-
-                            </form>
-                    </div>
 
                     <!-- Content Row -->
                     <div class="row">
