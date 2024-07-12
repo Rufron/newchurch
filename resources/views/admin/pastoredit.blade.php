@@ -29,7 +29,94 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Admin Panel <sup>1</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/admin')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url ('admin/admininterface')}}">
+                    <i class="fas fa-user fa-fw"></i>
+                    <span>Admin</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Members  Collapse Menu -->
+            {{-- <li class="nav-item">
+                <a class="nav-link collapsed" href="{{url ('admin/memberinterface')}}" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-users fa-fw"></i>
+                    <span>Members</span>
+                </a>
+            </li> --}}
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Church Program
+            </div>
+
+            <!-- Nav Item - Events -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url ('admin/events')}}">
+                    <i class="fas fa-calendar-alt fa-fw"></i>
+                    <span>Events</span>
+                </a>
+
+            </li>
+
+            <!-- Nav Item - Sermons -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{url ('admin/addsermon')}}">
+                    <i class="fas fa-book-bible fa-fw"></i>
+                    <span>Sermons</span></a>
+            </li>
+
+            <!-- Nav Item - Pastors -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url ('admin/addpastor')}}">
+                    <i class="fas fa-user-tie fa-fw"></i>
+                    <span>Pastors</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+
+        </ul>
+        <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -247,80 +334,14 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
-                        <a href="{{route('addsermon')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i>
-                            Back</a>
+                        <a href={{route('viewpastor')}}  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
-                    <!--content for the sermons-->
-                    <ul>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th> </th>
-                                    <th>Title</th>
-                                    <th>Bible Verse</th>
-                                    <th>Date</th>
-                                    <th>Author</th>
 
 
-                                </tr>
-
-                            </thead>
-                            <tbody>
-                                {{-- @foreach($add_sermons as $add_sermon)
-                                    <tr>
-                                        <td>{{ $add_sermon->id}}</td>
-                                        <td>{{ $add_sermon->title}}</td>
-                                        <td>{{ $add_sermon->text}}</td>
-                                        <td>{{ $add_sermon->date}}</td>
-                                        <td>{{$add_sermon->author}}</td>
-
-                                        <td>
-                                            <div class="d-flex justify-content-end">
-                                                <!-- edit button -->
-                                                <a href="{{route('#', $add_sermon->id)}}" class="btn btn-primary">Edit</a>
-
-                                                <!-- Delete Button -->
-                                                <form action={{route('#', $add_sermon->id) }} method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
-
-                                @foreach($add_sermons as $add_sermon)
-                                    <tr>
-                                        <td>{{ $add_sermon->id }}</td>
-                                        <td>{{ $add_sermon->title }}</td>
-                                        <td>{{ $add_sermon->text }}</td>
-                                        <td>{{ $add_sermon->date }}</td>
-                                        <td>{{ $add_sermon->author }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-end">
-                                                {{-- <button class="btn btn-primary edit-sermon" data-id="{{ $add_sermon->id }}">Edit</button> --}}
-                                                <a href="{{route('sermons.edit', $add_sermon->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
-                                                <form action="{{ route('sermons.destroy', $add_sermon->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                        @endforeach
-
-
-                                     </tbody>
-                        </table>
-
-                    </ul>
 
 
 
@@ -345,6 +366,69 @@
 
                         {{-- code starts here --}}
 
+
+                        <div class="card-body">
+                        <!-- add-sermon.blade.php -->
+
+                        <form method="POST" action="{{ route('pastor.update', $add_pastors->id) }}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" value="{{$add_pastors->name}}" id="name" name="name" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="role">Role:</label>
+                                <input type="text" class="form-control" value="{{$add_pastors->role}}" id="role" name="role" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message:</label>
+                                <textarea class="form-control" value="{{$add_pastors->message}}" id="message" name="message" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Image:</label>
+                                <input type="file" class="form-control" value="{{$add_pastors->image}}"id="image" name="image" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Save Pastor</button>
+
+
+
+                             <!-- Modal Dialog  for a succesful registration!!-->
+                             <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="create-event-modal-label" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="create-event-modal-label">New Pastor Added</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            You have Succesfully added a new pastor.
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {{-- Check for Success message and show modal if it exists --}}
+                            @if (session('success'))
+
+                            <script>
+                                $(document).ready(function() {
+                                    $('#create-event-modal').modal('show');
+                                });
+                            </script>
+
+                            @endif
+                        </form>
+                    </div>
 
                     <!-- Content Row -->
                     <div class="row">

@@ -10,6 +10,10 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\AddSermonController;
 use App\Http\Controllers\Admin\AddPastorController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+
+// for the Admin middleware.
+use App\Http\Middleware\Admin;
 
 Route::get('/', function () {
     return view('home');
@@ -97,6 +101,12 @@ Route::get('/admin/addpastor',  [AddPastorController::class, 'index'])->name('ad
 // Route to add pastors
 Route::post('admin/addpastor', [AddPastorController::class, 'store'])->name('addpastors.store');
 
+// Route to view the pastors in admin pastorview
+Route::get('/admin/addpastor/pastorview', [AddPastorController::class, 'viewindex'])->name('viewpastor');
+Route::get('/admin/addpastor/{pastor}/edit', [AddPastorController::class, 'edit'])->name('pastor.edit');
+Route::put('/admin/addpastor/{pastor}', [AddPastorController::class, 'update'])->name('pastor.update');
+Route::delete('/admin/addpastor/{pastor}', [AddPastorController::class, 'destroy'])->name('pastor.destroy');
+
 // Route to add new admins
 Route::get('admin/newadmin', [AdminInterfaceController::class, 'add'])->name('admininterface.newadmin');
 Route::post('/admin/newadmin', [AdminController::class, 'store'])->name('newadmin.store');
@@ -109,3 +119,18 @@ Route::delete('/admin/{admin}', [AdminInterfaceController::class, 'destroy'])->n
 
 // This one updates the admin
 Route::put('/admin/{admin}', [AdminInterfaceController::class, 'update'])->name('admin.update');
+
+
+// this one is for the authentication into login page.
+// Route::middleware([Admin::class])->group(function () {
+//     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+// });
+
+// Route::middleware([Admin::class])->group(function () {
+//     Route::get('/admin', [AdminController::class, 'index'])->name('login1');
+// });
+
+
+// this one is theoriginal one that was supposed to work.
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+

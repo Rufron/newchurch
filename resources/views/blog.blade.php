@@ -35,9 +35,9 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
 
                             <li class="nav-item"><a class="nav-link" href="{{ url('/home')}}">Homepage </a></li>
-                        <li class="nav-item current-nav-item"><a href="{{ url('/pastor')}}">Pastors </a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ url('/pastor')}}">Pastors </a></li>
                             <li class="nav-item"><a class="nav-link" href="{{url('/sermon')}}">Sermons</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ url('/events')}}">Events</a></li>
+                            <li class="nav-item current-nav-item"><a href="{{ url('/events')}}">Events</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}">Contact</a></li>
                     </ul>
@@ -107,7 +107,7 @@
 
                                 <div class="meta-top">
                                 <ul>
-                                    <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">John Doe</a></li>
+                                    <li class="d-flex align-items-center"><i class="bi bi-geo-alt"></i> <a href="#">{{$event->location}}</a></li>
                                     <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{{$event->date}}</time></a></li>
                                     <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">{{$event->time}}</a></li>
                                 </ul>

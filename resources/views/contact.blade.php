@@ -17,8 +17,10 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
-        {{-- another css code. --}}
-        {{-- <link rel="stylesheet" href="style.css"> --}}
+
+
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 
         {{-- fontawesome code: --}}
         {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-F0sPsrC86mNsihWz+uTU7G9dW/sghggusZ2s1FYE5I0LbNB7m3i1BgO2vsrsUCUp8jCW2YlX6Pv2j4wuIuMNXg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
@@ -146,8 +148,12 @@
                                         <div class="error-message"></div>
                                         <div class="sent-message">Your message has been sent. Thank you!</div>
 
+                                        <div class="g-recaptcha" data-sitekey="6Lepew4qAAAAAIUt1kR0tVuyLzRqHB8dRRZpfOJ6"></div>
+                                        <br/>
+
                                         <button type="submit">Send Message</button>
                                     </div>
+
 
                                     </div>
 
@@ -182,10 +188,25 @@
 
 
 
+
+
+
         <!-- Footer-->
         <footer class="bg-light py-5">
             <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2024 - Company Name</div></div>
         </footer>
+
+        <!-- captcha form -->
+
+
+
+        <script type="text/javascript">
+            var onloadCallback = function() {
+              alert("grecaptcha is ready!");
+            };
+          </script>
+
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- SimpleLightbox plugin JS-->

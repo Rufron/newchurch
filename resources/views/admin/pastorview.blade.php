@@ -46,18 +46,6 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    {{-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> --}}
 
                     <!-- Topbar Navbar -->
                      <ul class="navbar-nav ml-auto">
@@ -246,8 +234,8 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
-                        <a href="{{route('addsermon')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i>
+                        <h1 class="h3 mb-0 text-gray-800">Pastors</h1>
+                        <a href="{{route('addpastor')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i>
                             Back</a>
                     </div>
 
@@ -260,61 +248,45 @@
                             <thead>
                                 <tr>
                                     <th> </th>
-                                    <th>Title</th>
-                                    <th>Bible Verse</th>
-                                    <th>Date</th>
-                                    <th>Author</th>
-
-
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Message</th>
                                 </tr>
 
                             </thead>
                             <tbody>
-                                {{-- @foreach($add_sermons as $add_sermon)
-                                    <tr>
-                                        <td>{{ $add_sermon->id}}</td>
-                                        <td>{{ $add_sermon->title}}</td>
-                                        <td>{{ $add_sermon->text}}</td>
-                                        <td>{{ $add_sermon->date}}</td>
-                                        <td>{{$add_sermon->author}}</td>
 
+
+                                @foreach($add_pastors as $add_pastor)
+                                    <tr>
+                                        <td>{{ $add_pastor->id }}</td>
+                                        <td>{{ $add_pastor->name }}</td>
+                                        <td>{{ $add_pastor->role }}</td>
+                                        <td>{{ $add_pastor->message }}</td>
                                         <td>
                                             <div class="d-flex justify-content-end">
-                                                <!-- edit button -->
-                                                <a href="{{route('#', $add_sermon->id)}}" class="btn btn-primary">Edit</a>
 
-                                                <!-- Delete Button -->
-                                                <form action={{route('#', $add_sermon->id) }} method="POST" enctype="multipart/form-data">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach --}}
-
-                                @foreach($add_sermons as $add_sermon)
-                                    <tr>
-                                        <td>{{ $add_sermon->id }}</td>
-                                        <td>{{ $add_sermon->title }}</td>
-                                        <td>{{ $add_sermon->text }}</td>
-                                        <td>{{ $add_sermon->date }}</td>
-                                        <td>{{ $add_sermon->author }}</td>
-                                        <td>
-                                            <div class="d-flex justify-content-end">
-                                                {{-- <button class="btn btn-primary edit-sermon" data-id="{{ $add_sermon->id }}">Edit</button> --}}
-                                                <a href="{{route('sermons.edit', $add_sermon->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i>Edit</a>
+                                                {{-- <a href="{{route('sermons.edit', $add_sermon->id)}}" class="btn btn-primary">Edit</a>
                                                 <form action="{{ route('sermons.destroy', $add_sermon->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
 
-                                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                </form> --}}
+                                                <a href="{{ route('pastor.edit', $add_pastor->id) }}" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-edit"></i> Edit
+                                                </a>
+                                                <form action="{{ route('pastor.destroy', $add_pastor->id) }}" method="POST" style="display:inline;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this pastor?')">
+                                                        <i class="fas fa-trash"></i> Delete
+                                                    </button>
                                                 </form>
                                             </div>
                                         </td>
                                     </tr>
-                        @endforeach
+                                @endforeach
 
 
                                      </tbody>

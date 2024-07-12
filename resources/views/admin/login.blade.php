@@ -44,7 +44,9 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    {{-- admin.dashboard --}}
+                                    <form class="user" action="{{ route('admin.dashboard') }}">
+                                        @csrf
                                         <div class="form-group">
                                             <input type="email" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
@@ -61,9 +63,12 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="{{route ('admin')}}" class="btn btn-primary btn-user btn-block">
+                                        {{-- <a href="{{route ('admin.dashboard')}}" class="btn btn-primary btn-user btn-block">
                                             Login
-                                        </a>
+                                        </a> --}}
+                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </button>
                                         <hr>
                                     </form>
                                     <hr>
