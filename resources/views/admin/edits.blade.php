@@ -77,58 +77,6 @@
 
 
                             <!-- Admin List -->
-                                {{-- <form action="{{ route('newadmin.store') }}" method="POST">
-                                    @csrf
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <label for="name">Name</label>
-                                            <input type="text" class="form-control" id="name" name="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="password">Password</label>
-                                            <input type="password" class="form-control" id="password" name="password" required>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Save</button>
-                                    </div>
-
-                                 <!-- Modal Dialog  for a succesful registration!!-->
-                                 <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="create-event-modal-label" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="create-event-modal-label">New Pastor Added</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                You have Succesfully added a new Admin.
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Check for Success message and show modal if it exists -->
-                                @if (session('success'))
-
-                                <script>
-                                    $(document).ready(function() {
-                                        $('#create-event-modal').modal('show');
-                                    });
-                                </script>
-
-                                @endif
-                            </form> --}}
 
                             <form action="{{ route('admin.update', $admins->id) }}" method="POST">
                                 @csrf

@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="{{ asset('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css')}}" >
-    {{-- <link href="startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css" rel="stylesheet"> --}}
+
 
     <!-- icons i added later -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -67,14 +67,6 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Members Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url ('admin/memberinterface')}}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Members</span>
-                </a>
-            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -133,19 +125,6 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    {{-- <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -218,10 +197,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    {{-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Events Page</h1>
-                        <a href="{{url('admin/events')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-calendar-alt fa-sm text-white-50"></i> Events Page</a>
-                    </div> --}}
+
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Events Page</h1>

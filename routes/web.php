@@ -121,16 +121,6 @@ Route::delete('/admin/{admin}', [AdminInterfaceController::class, 'destroy'])->n
 Route::put('/admin/{admin}', [AdminInterfaceController::class, 'update'])->name('admin.update');
 
 
-// this one is for the authentication into login page.
-// Route::middleware([Admin::class])->group(function () {
-//     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-// });
-
-// Route::middleware([Admin::class])->group(function () {
-//     Route::get('/admin', [AdminController::class, 'index'])->name('login1');
-// });
-
-
 // this one is theoriginal one that was supposed to work.
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 

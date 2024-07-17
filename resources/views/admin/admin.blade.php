@@ -68,13 +68,7 @@
             </li>
 
             <!-- Nav Item - Members Collapse Menu -->
-            {{-- <li class="nav-item">
-                <a class="nav-link collapsed" href="{{url('admin/memberinterface')}}" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-users fa-fw"></i>
-                    <span>Members</span>
-                </a>
-            </li> --}}
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
