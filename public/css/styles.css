@@ -12548,3 +12548,12 @@ color:#c4a484;
     90% { opacity: 1; }
     100% { opacity: 1; }
   }
+
+
+
+
+
+  .logo img {
+    max-height: 40px; /* Adjust the value to set the desired logo height */
+    width: auto; /* This will maintain the aspect ratio of the logo */
+  }
