@@ -23,8 +23,8 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('home');
+    {   $add_sermons = AddSermon::all();
+        return view('home', compact('add_sermons'));
     }
 
     public function userindex()

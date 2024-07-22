@@ -15,9 +15,12 @@ use App\Http\Controllers\Auth\LoginController;
 // for the Admin middleware.
 use App\Http\Middleware\Admin;
 
-Route::get('/', function () {
-    return view('home');
-});
+// Route::get('/', function () {
+//     return view('home');
+// });
+
+// let me define the new route to display the 1st page of my New Church project.
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 Route::get('/home', [ChurchController::class, 'home'])->name('home');
 Route::get('/about', [ChurchController::class, 'about'])->name('about');
@@ -39,6 +42,7 @@ Route::get('/pastor', [ChurchController::class, 'pastor'])->name('pastor');
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
+
 
 
 

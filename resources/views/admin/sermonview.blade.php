@@ -78,9 +78,7 @@
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
@@ -107,8 +105,6 @@
                                     <th>Bible Verse</th>
                                     <th>Date</th>
                                     <th>Author</th>
-
-
                                 </tr>
 
                             </thead>
