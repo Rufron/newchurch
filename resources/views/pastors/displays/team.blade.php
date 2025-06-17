@@ -5,7 +5,7 @@
         <p></p>
     </div>
 
-    <div class="container">
+    {{-- <div class="container">
         @foreach ($add_pastors as $add_pastor)
             <div class="row gy-4 align-items-stretch justify-content-between features-item">
                 <div class="col-lg-6 d-flex align-items-center features-img-bg" data-aos="zoom-out">
@@ -22,7 +22,52 @@
                 </div>
             </div>
         @endforeach
+    </div> --}}
+
+
+
+
+
+
+
+
+
+    <div id="carouselExampleSlidesOnly" style="width:500px" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="https://i.pinimg.com/736x/01/a0/91/01a091fd1159b4218b2049561923aecf.jpg"
+                    alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://i.pinimg.com/736x/c0/35/33/c03533d8338b79285826472892730286.jpg"
+                    alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="https://i.pinimg.com/736x/9e/75/6a/9e756a3fc996a1cb85eee7a50714237f.jpg"
+                    alt="Third slide">
+            </div>
+        </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.carousel').carousel({
+                interval: 2
+            });
+        });
+    </script>
+
+
+    {{-- <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="https://i.pinimg.com/736x/01/a0/91/01a091fd1159b4218b2049561923aecf.jpg" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div> --}}
+
 </section>
 
 <!-- Team Section -->

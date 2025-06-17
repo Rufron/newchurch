@@ -4,7 +4,7 @@
 @section('title', 'Our Pastors')
 
 @section('content')
-{{-- pastors/displays/team--}}
+<!-- pastors/displays/team-->
     @include('pastors.displays.team')
 
 @endsection
