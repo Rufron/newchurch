@@ -15,10 +15,6 @@ use App\Http\Controllers\Auth\LoginController;
 // for the Admin middleware.
 use App\Http\Middleware\Admin;
 
-// Route::get('/', function () {
-//     return view('home');
-// });
-
 // let me define the new route to display the 1st page of my New Church project.
 Route::get('/', [HomeController::class, 'index'])->name('index');
 
@@ -30,15 +26,12 @@ Route::get('/sermon', [ChurchController::class, 'sermon'])->name('sermon');
 Route::get('/pastor', [ChurchController::class, 'pastor'])->name('pastor');
 
 
-// Route::get('/contact', 'ContactController@index')->name('contact');
-// Route::post('/contact', 'ContactController@store')->name('contact.store');
-
-
+// Route to display the contact page and store the contact form data.
  Route::get('/contact', [ContactController::class, 'index'])->name('contact');
  Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
-//  Route::get('/admin', 'AdminController@index');
+
 
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
