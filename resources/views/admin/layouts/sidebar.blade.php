@@ -16,11 +16,13 @@
            <hr class="sidebar-divider my-0">
 
            <!-- Nav Item - Dashboard -->
-           <li class="nav-item  active">
+           <li class="nav-item {{ request()->is('admin') ? 'active' : '' }}">
                <a class="nav-link" href="{{ url('/admin') }}">
                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                   <span>Dashboard</span></a>
+                   <span>Dashboard</span>
+               </a>
            </li>
+
 
            <!-- Divider -->
            <hr class="sidebar-divider">
@@ -31,12 +33,13 @@
            </div>
 
            <!-- Nav Item - Pages Collapse Menu -->
-           <li class="nav-item">
+           <li class="nav-item {{ request()->is('admin/admininterface') ? 'active' : '' }}">
                <a class="nav-link" href="{{ url('/admin/admininterface') }}">
                    <i class="fas fa-user fa-fw"></i>
                    <span>Admin</span>
                </a>
            </li>
+
 
            <!-- Nav Item - Members Collapse Menu -->
 
@@ -50,26 +53,28 @@
            </div>
 
            <!-- Nav Item - Pages Collapse Menu -->
-           <li class="nav-item">
-               <a class="nav-link collapsed" href="{{ url('admin/events') }}" aria-expanded="true"
-                   aria-controls="collapsePages">
+           <li class="nav-item {{ request()->is('admin/events') ? 'active' : '' }}">
+               <a class="nav-link" href="{{ url('admin/events') }}">
                    <i class="fas fa-calendar-alt fa-fw"></i>
                    <span>Events</span>
                </a>
            </li>
 
+
            <!-- Nav Item - Charts -->
-           <li class="nav-item">
+           <li class="nav-item {{ request()->is('admin/addsermon') ? 'active' : '' }}">
                <a class="nav-link" href="{{ url('admin/addsermon') }}">
                    <i class="fas fa-book-bible fa-fw"></i>
-                   <span>Sermons</span></a>
+                   <span>Sermons</span>
+               </a>
            </li>
 
            <!-- Nav Item - Tables -->
-           <li class="nav-item">
+           <li class="nav-item {{ request()->is('admin/addpastor') ? 'active' : '' }}">
                <a class="nav-link" href="{{ url('admin/addpastor') }}">
                    <i class="fas fa-user-tie fa-fw"></i>
-                   <span>Pastors</span></a>
+                   <span>Pastors</span>
+               </a>
            </li>
 
            <!-- Divider -->

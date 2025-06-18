@@ -18,10 +18,10 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="{{ asset('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css')}}" >
+    <link rel="stylesheet" href="{{ asset('startbootstrap-sb-admin-2-gh-pages/css/sb-admin-2.min.css') }}">
 
-     <!-- icons i added later -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- icons i added later -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body id="page-top">
@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url('/admin')}}">
+                <a class="nav-link" href="{{ url('/admin') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -60,7 +60,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/admininterface')}}">
+                <a class="nav-link" href="{{ url('admin/admininterface') }}">
                     <i class="fas fa-user fa-fw"></i>
                     <span>Admin</span>
                 </a>
@@ -85,7 +85,7 @@
 
             <!-- Nav Item - Events -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/events')}}">
+                <a class="nav-link" href="{{ url('admin/events') }}">
                     <i class="fas fa-calendar-alt fa-fw"></i>
                     <span>Events</span>
                 </a>
@@ -94,14 +94,14 @@
 
             <!-- Nav Item - Sermons -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{url ('admin/addsermon')}}">
+                <a class="nav-link" href="{{ url('admin/addsermon') }}">
                     <i class="fas fa-book-bible fa-fw"></i>
                     <span>Sermons</span></a>
             </li>
 
             <!-- Nav Item - Pastors -->
             <li class="nav-item">
-                <a class="nav-link" href="{{url ('admin/addpastor')}}">
+                <a class="nav-link" href="{{ url('admin/addpastor') }}">
                     <i class="fas fa-user-tie fa-fw"></i>
                     <span>Pastors</span></a>
             </li>
@@ -134,7 +134,7 @@
 
 
                     <!-- Topbar Navbar -->
-                     <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
@@ -178,7 +178,9 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Sermon Content</h1>
-                        <a href={{route('viewpastor')}}  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
+                        <a href={{ route('viewpastor') }}
+                            class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-arrow-left fa-sm text-white-50"></i> Back</a>
                     </div>
 
                     <!-- Content Row -->
@@ -212,144 +214,156 @@
 
 
                         <div class="card-body">
-                        <!-- add-sermon.blade.php -->
+                            <!-- add-sermon.blade.php -->
 
-                        <form method="POST" action="{{ route('pastor.update', $add_pastors->id) }}" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group">
-                                <label for="name">Name:</label>
-                                <input type="text" class="form-control" value="{{$add_pastors->name}}" id="name" name="name" required>
-                            </div>
+                            <form method="POST" action="{{ route('pastor.update', $add_pastors->id) }}"
+                                enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group">
+                                    <label for="name">Name:</label>
+                                    <input type="text" class="form-control" value="{{ $add_pastors->name }}"
+                                        id="name" name="name" required>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="role">Role:</label>
-                                <input type="text" class="form-control" value="{{$add_pastors->role}}" id="role" name="role" required>
-                            </div>
+                                <div class="form-group">
+                                    <label for="role">Role:</label>
+                                    <input type="text" class="form-control" value="{{ $add_pastors->role }}"
+                                        id="role" name="role" required>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="message">Message:</label>
-                                <textarea class="form-control" value="{{$add_pastors->message}}" id="message" name="message" required></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <label for="message">Message:</label>
+                                    <textarea class="form-control" id="message" name="message" required>{{ $add_pastors->message }}</textarea>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="image">Image:</label>
-                                <input type="file" class="form-control" value="{{$add_pastors->image}}"id="image" name="image" required>
-                            </div>
+                                <div class="form-group">
+                                    <label for="image">Current Image:</label><br>
+                                    <img src="{{ asset('storage/' . $add_pastors->image) }}" alt="Pastor Image"
+                                        width="150" class="mb-2 rounded shadow">
+                                </div>
 
-                            <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#create-event-modal">Save Pastor</button>
+                                <div class="form-group">
+                                    <label for="image">Image:</label>
+                                    <input type="file" class="form-control"
+                                        value="{{ $add_pastors->image }}"id="image" name="image" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#create-event-modal">Save Pastor</button>
 
 
 
-                             <!-- Modal Dialog  for a succesful registration!!-->
-                             <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog" aria-labelledby="create-event-modal-label" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="create-event-modal-label">New Pastor Added</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            You have Succesfully added a new pastor.
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <!-- Modal Dialog  for a succesful registration!!-->
+                                <div class="modal fade" id="create-event-modal" tabindex="-1" role="dialog"
+                                    aria-labelledby="create-event-modal-label" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="create-event-modal-label">New Pastor Added
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                You have Succesfully added a new pastor.
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {{-- Check for Success message and show modal if it exists --}}
-                            @if (session('success'))
-
-                            <script>
-                                $(document).ready(function() {
-                                    $('#create-event-modal').modal('show');
-                                });
-                            </script>
-
-                            @endif
-                        </form>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-
-
-                        <div class="col-lg-6 mb-4">
-
-
-
-
+                                {{-- Check for Success message and show modal if it exists --}}
+                                @if (session('success'))
+                                    <script>
+                                        $(document).ready(function() {
+                                            $('#create-event-modal').modal('show');
+                                        });
+                                    </script>
+                                @endif
+                            </form>
                         </div>
+
+                        <!-- Content Row -->
+                        <div class="row">
+
+
+
+                            <div class="col-lg-6 mb-4">
+
+
+
+
+                            </div>
+                        </div>
+
                     </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-
-            </footer>
-            <!-- End of Footer -->
+            <!-- End of Content Wrapper -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
-    </div>
-    <!-- End of Page Wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js') }}"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/js/sb-admin-2.min.js') }}"></script>
 
-    <!-- Page level plugins -->
-    <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js') }}"></script>
+        <!-- Page level plugins -->
+        <script src="{{ asset('startbootstrap-sb-admin-2-gh-pages/vendor/chart.js/Chart.min.js') }}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
+        <!-- Page level custom scripts -->
+        <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
+        <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
 
 
 </body>
 
 </html>
-

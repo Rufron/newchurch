@@ -16,13 +16,9 @@ class AdminController extends Controller
     public function index()
     {
 
-        // // this one is chatgpt example.
-        // if (!auth()->check()) {
-        //     return redirect()->route('login')->with('error', 'You must log in first');
-        // }
-        $contacts = Contact::all();
+        // $contacts = Contact::all()->sortByDesc('created_at')->take(5);
+        $contacts = Contact::orderBy('created_at', 'desc')->paginate(5);
         $totalMembers = Contact::count();
-
 
         return view('admin.admin', ['contacts' => $contacts, 'totalMembers' => $totalMembers]);
     }
@@ -49,26 +45,6 @@ class AdminController extends Controller
         return redirect()->route('newadmin.index')
             ->with('success', 'New admin created successfully.');
     }
-
-    // // to authenticate admins logging in.
-    // public function login(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'email' => ['required', 'email'],
-    //         'password' => ['required'],
-    //     ]);
-
-    //     if (Auth::attempt($credentials, $request->boolean('remember'))) {
-    //         $request->session()->regenerate();
-
-    //         return redirect()->intended(route('admin.dashboard'));
-    //     }
-
-    //     return back()->withErrors([
-    //         'email' => 'The provided credentials do not match our records.',
-    //     ])->onlyInput('email');
-    // }
-
 
 
     public function login(Request $request)
