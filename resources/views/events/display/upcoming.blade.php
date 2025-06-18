@@ -19,7 +19,7 @@
                                 <p class="post-category"></p>
 
                                 <h2 class="title">
-                                    <a href="{{ url('/blog') }}">{{ $event->title }}</a>
+                                    <a href="{{ route('blog.show' ,$event->id) }}">{{ $event->title }}</a>
                                 </h2>
 
                                 <div class="d-flex align-items-center">

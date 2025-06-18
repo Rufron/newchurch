@@ -52,7 +52,7 @@ Route::get('/sermon', [AddSermonController::class, 'userindex'])->name('addsermo
 Route::get('/pastor', [AddPastorController::class, 'userindex'])->name('addpastor');
 
 // route to display blogs
-Route::get('/blog', [EventController::class, 'blogindex'])->name('events');
+Route::get('/blog/{id}', [EventController::class, 'blogindex'])->name('blog.show');
 
 // Route to display the login page
 Route::get('/login', [AdminController::class, 'add'])->name('login');

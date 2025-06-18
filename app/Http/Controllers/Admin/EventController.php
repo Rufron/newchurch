@@ -15,14 +15,17 @@ class EventController extends Controller
         return view('admin.events', compact('events'));
     }
 
-    public function userindex(Request $request){
+    public function userindex(Request $request)
+    {
         $events = Event::all();
         return view('events', compact('events'));
     }
 
-    public function blogindex(Request $request){
-        $events = Event::all();
-        return view('blog', compact('events'));
+    public function blogindex($id)
+    {
+
+        $event = Event::findOrFail($id); // Or use route-model binding
+        return view('blog', compact('event'));
     }
 
 
@@ -63,42 +66,42 @@ class EventController extends Controller
     // this facilitates the edit function.
     public function edit($event)
     {
-      $events = Event::find($event);
-      return view ('admin.edit', compact('events'));
+        $events = Event::find($event);
+        return view('admin.edit', compact('events'));
     }
 
     // Update the events table
 
 
     public function update(Request $request, Event $event)
-{
-    $validatedData = $request->validate([
-        'title' => 'required',
-        'date' => 'required|date',
-        'time' => 'required',
-        'location' => 'required',
-        'description' => 'required',
-        'image' => 'nullable|image|max:2048',
-    ]);
+    {
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'date' => 'required|date',
+            'time' => 'required',
+            'location' => 'required',
+            'description' => 'required',
+            'image' => 'nullable|image|max:2048',
+        ]);
 
-    if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) {
 
-        $imagePath = $request->file('image')->store('event_images', 'public');
-    } else {
-        $imagePath = $event->image;
+            $imagePath = $request->file('image')->store('event_images', 'public');
+        } else {
+            $imagePath = $event->image;
+        }
+
+        $event->update([
+            'title' => $validatedData['title'],
+            'date' => $validatedData['date'],
+            'time' => $validatedData['time'],
+            'location' => $validatedData['location'],
+            'description' => $validatedData['description'],
+            'image' => $imagePath,
+        ]);
+
+        return redirect()->route('events');
     }
-
-    $event->update([
-        'title' => $validatedData['title'],
-        'date' => $validatedData['date'],
-        'time' => $validatedData['time'],
-        'location' => $validatedData['location'],
-        'description' => $validatedData['description'],
-        'image' => $imagePath,
-    ]);
-
-    return redirect()->route('events');
-}
 
 
 
@@ -108,6 +111,4 @@ class EventController extends Controller
         $event->delete();
         return redirect()->route('events');
     }
-
-
 }
