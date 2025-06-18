@@ -48,6 +48,9 @@ Route::get('/home', [HomeController::class, 'userindex'])->name('home');
 // route to display the sermons
 Route::get('/sermon', [AddSermonController::class, 'userindex'])->name('addsermon');
 
+// route to display individual sermons
+Route::get('/sermon/{id}', [AddSermonController::class, 'show'])->name('sermon.show');
+
 // route to display the pastors
 Route::get('/pastor', [AddPastorController::class, 'userindex'])->name('addpastor');
 
