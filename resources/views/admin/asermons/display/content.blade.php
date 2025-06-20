@@ -16,69 +16,92 @@
     </div>
 
     <!-- Content Row -->
-    {{-- where the contents should be placed.. --}}
-    <div class="row">
+    <!-- container-fluid -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <style>
+                .form-container {
+                    background-color: #fff;
+                    border-radius: 0.75rem;
+                    padding: 1.5rem;
+                    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+                }
 
-        {{-- code starts here --}}
+                .form-container .form-group label {
+                    font-weight: 600;
+                    font-size: 0.95rem;
+                    margin-bottom: 0.25rem;
+                }
 
+                .form-container .form-control {
+                    font-size: 0.9rem;
+                    padding: 0.4rem 0.75rem;
+                    border-radius: 0.5rem;
+                }
 
-        <div class="card-body">
-            <!-- add-sermon.blade.php -->
+                .form-container .btn-primary {
+                    width: 100%;
+                    padding: 0.6rem;
+                    font-weight: 600;
+                    border-radius: 0.5rem;
+                    margin-top: 1rem;
+                }
 
-            <form method="POST" action="{{ route('addsermon.store') }}">
-                @csrf
+                .form-container .alert-success {
+                    margin-top: 1rem;
+                    border-radius: 0.5rem;
+                    font-size: 0.9rem;
+                }
 
-                <div class="form-group">
-                    <label for="title">Title:</label>
-                    <input type="text" class="form-control" id="title" name="title" required>
-                </div>
+                .form-container textarea.form-control {
+                    resize: vertical;
+                    min-height: 100px;
+                }
+            </style>
 
-                <div class="form-group">
-                    <label for="date">Date:</label>
-                    <input type="date" class="form-control" id="date" name="date" required>
-                </div>
+            <div class="form-container">
+                <h5 class="text-center text-primary mb-3 fw-bold">Add New Sermon</h5>
 
-                <div class="form-group">
-                    <label for="text">Text:</label>
-                    <textarea class="form-control" id="text" name="text" required></textarea>
-                </div>
+                <form method="POST" action="{{ route('addsermon.store') }}">
+                    @csrf
 
-                <div class="form-group">
-                    <label for="notes">Notes:</label>
-                    <textarea class="form-control" id="notes" name="notes" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="author">Author:</label>
-                    <input type="text" class="form-control" id="author" name="author" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Add Sermon</button>
-
-                @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
+                    <div class="mb-3">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" required>
                     </div>
-                @endif
 
-            </form>
-        </div>
+                    <div class="mb-3">
+                        <label for="date">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
 
-        <!-- Content Row -->
-        <div class="row">
+                    <div class="mb-3">
+                        <label for="text">Text</label>
+                        <textarea class="form-control" id="text" name="text" required></textarea>
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="notes">Notes</label>
+                        <textarea class="form-control" id="notes" name="notes" required></textarea>
+                    </div>
 
+                    <div class="mb-3">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" required>
+                    </div>
 
-            <div class="col-lg-6 mb-4">
+                    <button type="submit" class="btn btn-primary">Add Sermon</button>
 
-
-
-
+                    @if (session('success'))
+                        <div class="alert alert-success text-center">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+                </form>
             </div>
         </div>
-
     </div>
-    <!-- /.container-fluid -->
+    <!--container-fluid -->
 
 </div>
 <!-- End of Main Content -->

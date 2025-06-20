@@ -3,7 +3,7 @@
 @section('content')
 
 
-    @include('admin.aevents.display.content')
+    @include('admin.aevents.display.createevent')
 
 @endsection
 

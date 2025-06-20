@@ -72,6 +72,9 @@ Route::get('/admin/memberinterface', [MemberInterfaceController::class, 'show'])
 // Route for the Events views.
 Route::get('/admin/events',  [EventController::class, 'index'])->name('events');
 
+// Route to display all events in the admin panel.
+Route::get('/admin/allevents', [EventController::class, 'allindex'])->name('events.all');
+
 // Route to the events store.
 Route::post('/admin/events', [EventController::class, 'store'])->name('admin.events.store');
 

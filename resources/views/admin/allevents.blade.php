@@ -1,5 +1,4 @@
 @extends('admin.layouts.index')
 @section('content')
-    @include('admin.apastors.view.newedited')
+    @include('admin.aevents.view.showevents')
 @endsection
-

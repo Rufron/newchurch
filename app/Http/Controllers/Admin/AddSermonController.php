@@ -28,7 +28,7 @@ class AddSermonController extends Controller
 
     public function viewindex()
     {
-        $add_sermons = AddSermon::all();
+        $add_sermons = AddSermon::latest()->paginate(5);
         return view('admin/sermonview', compact('add_sermons'));
     }
 

@@ -15,6 +15,12 @@ class EventController extends Controller
         return view('admin.events', compact('events'));
     }
 
+     public function allindex(Request $request)
+    {
+        $events = Event::latest()->paginate(5);
+        return view('admin.allevents', compact('events'));
+    }
+
     public function userindex(Request $request)
     {
         $events = Event::all();
