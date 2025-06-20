@@ -42,7 +42,7 @@ class AdminController extends Controller
 
         $admin = Admin::create($validatedData);
 
-        return redirect()->route('newadmin.index')
+        return redirect()->route('admininterface')
             ->with('success', 'New admin created successfully.');
     }
 

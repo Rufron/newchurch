@@ -12,7 +12,7 @@ class AdminInterfaceController extends Controller
     public function index()
     {
 
-            $admins = Admin::all();
+            $admins = Admin::paginate(5);
             $totalAdmins = $admins->count();
 
         return view('admin.admininterface', compact('admins','totalAdmins'));

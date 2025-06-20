@@ -95,89 +95,94 @@
         <!-- Area Chart -->
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Admin Members</h6>
-                    <div class="dropdown no-arrow">
-                    </div>
+                <div class="table-responsive mt-4">
+                    <table class="table table-bordered table-hover align-middle">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th class="text-end">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($admins as $admin)
+                                <tr>
+                                    <td>{{ $admin->id }}</td>
+                                    <td>{{ $admin->name }}</td>
+                                    <td>{{ $admin->email }}</td>
+                                    <td>
+                                        <div class="d-flex justify-content-end">
+                                            <a href="{{ route('admin.edit', $admin->id) }}"
+                                                class="btn btn-sm btn-outline-primary me-2">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </a>
+                                            <form action="{{ route('admin.destroy', $admin->id) }}" method="POST"
+                                                onsubmit="return confirm('Are you sure?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                    <i class="fas fa-trash"></i> Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">No admins found.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pagination Controls -->
+                <div class="d-flex justify-content-center mt-3">
+                    {{ $admins->links() }}
                 </div>
 
 
-
-                <table class="table">
-
-                    <tr>
-                        <th> </th>
-                        <th>Name</th>
-                        <th>Email</th>
-
-                    </tr>
-                    {{-- table to actually display the content... --}}
-                    @foreach ($admins as $admin)
-                        <tr>
-                            <div class="container">
-                                <td>{{ $admin->id }}</td>
-                                <td>{{ $admin->name }}</td>
-                                <td>{{ $admin->email }}</td>
-                                <td>
-                                    <div class="d-flex justify-content-end">
-                                        <a href="{{ route('admin.edit', $admin->id) }}"
-                                            class="btn btn-primary btn-sm mr-2">Edit</a>
-                                        <form action="{{ route('admin.destroy', $admin->id) }}" method="POST"
-                                            class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                        </form>
-                                    </div>
-                                </td>
+                @if (session('success'))
+                    <!-- Modal HTML (make sure it exists in this Blade) -->
+                    <div class="modal fade" id="create-event-modal" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Success</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ session('success') }}
+                                </div>
                             </div>
-                        </tr>
-                    @endforeach
-
-
-
-                </table>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-
-
-
-
-        <!-- Content Row -->
-        <div class="row">
-
-
-
-            <div class="col-lg-6 mb-4">
-
-
+                    <!-- Script to trigger modal -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const modal = new bootstrap.Modal(document.getElementById('create-event-modal'));
+                            modal.show();
+                        });
+                    </script>
+                @endif
 
 
             </div>
+            <!-- /.container-fluid -->
+
         </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+
+        </footer>
+        <!-- End of Footer -->
 
     </div>
-    <!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
-
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-
-</footer>
-<!-- End of Footer -->
-
-</div>
-<!-- End of Content Wrapper -->
+    <!-- End of Content Wrapper -->
 
 </div>
 <!-- End of Page Wrapper -->
