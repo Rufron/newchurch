@@ -66,9 +66,6 @@ Route::get('/login', [AdminController::class, 'add'])->name('login');
 
 
 
-// Route for the MemberInterface views.
-Route::get('/admin/memberinterface', [MemberInterfaceController::class, 'show'])->name('memberinterface');
-
 // Route for the Events views.
 Route::get('/admin/events',  [EventController::class, 'index'])->name('events');
 
