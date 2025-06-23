@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Admin;
 
 
-// let me try using this auth property
-use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -30,22 +31,6 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:admins,email',
-            'password' => 'required|string|min:8',
-        ]);
-
-
-
-        $admin = Admin::create($validatedData);
-
-        return redirect()->route('admininterface')
-            ->with('success', 'New admin created successfully.');
-    }
-
 
     public function login(Request $request)
     {
@@ -54,16 +39,45 @@ class AdminController extends Controller
             'password' => 'required',
         ]);
 
-        $admin = Admin::where('email', $credentials['email'])->first();
-
-        if ($admin && $credentials['password'] === $admin->password) {
-            Auth::guard('admin')->login($admin, $request->filled('remember'));
+        if (Auth::guard('admin')->attempt($credentials)) {
+            // Authentication passed
             return redirect()->route('admin.dashboard');
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'email' => 'Invalid credentials.',
         ]);
+    }
+
+
+
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:admins,email',
+            'password' => 'required|string|min:8',
+        ]);
+
+        // Hash the password before saving
+        $validatedData['password'] = Hash::make($validatedData['password']);
+
+        Admin::create($validatedData);
+
+        return redirect()->route('admininterface')
+            ->with('success', 'New admin created successfully.');
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate(); // optional, clears the session
+        $request->session()->regenerateToken(); // prevents CSRF attacks
+
+        return redirect()->route('login')->with('success', 'Logged out successfully.');
     }
 
 }

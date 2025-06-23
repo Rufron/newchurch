@@ -202,31 +202,13 @@
 
 
 
-
-                <!-- Content Row -->
-                <div class="row">
-
-
-
-                    <div class="col-lg-6 mb-4">
-
-
-
-
-                    </div>
-                </div>
-
             </div>
             <!-- /.container-fluid -->
 
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
 
-        </footer>
-        <!-- End of Footer -->
 
         </div>
         <!-- End of Content Wrapper -->

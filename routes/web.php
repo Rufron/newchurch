@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AddSermonController;
 use App\Http\Controllers\Admin\AddPastorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 // for the Admin middleware.
 use App\Http\Middleware\Admin;
@@ -33,8 +34,6 @@ Route::get('/pastor', [ChurchController::class, 'pastor'])->name('pastor');
 
 
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
 
 
 
@@ -60,11 +59,18 @@ Route::get('/blog/{id}', [EventController::class, 'blogindex'])->name('blog.show
 // Route to display the login page
 Route::get('/login', [AdminController::class, 'add'])->name('login');
 
+Route::post('/login', [AdminController::class, 'login'])->name('login.submit');
 
 
 
+// protect the admin routes with the 'auth:admin' middleware
+
+Route::middleware(['auth:admin'])->group(function () {
 
 
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+Route::get('/admin/admininterface', [AdminInterfaceController::class, 'index'])->name('admininterface');
 
 // Route for the Events views.
 Route::get('/admin/events',  [EventController::class, 'index'])->name('events');
@@ -124,3 +130,12 @@ Route::put('/admin/{admin}', [AdminInterfaceController::class, 'update'])->name(
 // this one is theoriginal one that was supposed to work.
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
+Route::post('/admin/logout', function () {
+    Auth::guard('admin')->logout();
+    session()->invalidate();
+    session()->regenerateToken();
+    return redirect('/login');
+})->name('admin.logout');
+
+
+});

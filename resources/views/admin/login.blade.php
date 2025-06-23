@@ -34,35 +34,17 @@
                 <p class="text-muted">Welcome back! Please enter your credentials.</p>
             </div>
 
-            <form method="POST" action="{{ route('admin.dashboard') }}">
+            <form method="POST" action="{{ route('login.submit') }}">
                 @csrf
+                <!-- Email input -->
+                <input type="email" name="email" class="form-control" required>
 
-                <div class="mb-3">
-                    <label for="email" class="form-label fw-semibold">Email Address</label>
-                    <input type="email" class="form-control form-control-lg" id="email" name="email"
-                        placeholder="you@example.com" required>
-                </div>
+                <!-- Password input -->
+                <input type="password" name="password" class="form-control" required>
 
-                <div class="mb-3">
-                    <label for="password" class="form-label fw-semibold">Password</label>
-                    <input type="password" class="form-control form-control-lg" id="password" name="password"
-                        placeholder="••••••••" required>
-                </div>
-
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="remember" name="remember">
-                        <label class="form-check-label" for="remember">
-                            Remember me
-                        </label>
-                    </div>
-                    <a href="#" class="text-decoration-none small text-primary">Forgot Password?</a>
-                </div>
-
-                <div class="d-grid">
-                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
-                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
+
         </div>
     </div>
 
