@@ -25,6 +25,8 @@
 
 </head>
 
+
+
 <body class="bg-gradient-primary">
 
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
@@ -34,16 +36,17 @@
                 <p class="text-muted">Welcome back! Please enter your credentials.</p>
             </div>
 
-            <form method="POST" action="{{ route('login.submit') }}">
-                @csrf
-                <!-- Email input -->
-                <input type="email" name="email" class="form-control" required>
+           <form method="POST" action="{{ route('login.submit') }}">
+            @csrf
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn btn-login">Login</button>
 
-                <!-- Password input -->
-                <input type="password" name="password" class="form-control" required>
-
-                <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+        </form>
 
         </div>
     </div>

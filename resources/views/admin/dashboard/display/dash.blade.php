@@ -116,75 +116,53 @@
 
 
 
-                        <table class="table  table-striped table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Message</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($contacts as $contact)
-                                    <tr>
-                                        <td>{{ $contact->id }}</td>
-                                        <td>{{ $contact->name }}</td>
-                                        <td>{{ $contact->email }}</td>
-                                        <td>{{ $contact->message }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-
-
-                            {{-- Pagination links --}}
-                            <div class="row mt-4">
-                                <div class="col-md-12 d-flex justify-content-between align-items-center">
-                                    <div class="text-muted small">
-                                        Showing {{ $contacts->firstItem() }} to {{ $contacts->lastItem() }} of
-                                        {{ $contacts->total() }} results
-                                    </div>
-
-                                    <nav aria-label="Page navigation">
-                                        <ul class="pagination mb-0">
-                                            {{-- Previous Page Link --}}
-                                            @if ($contacts->onFirstPage())
-                                                <li class="page-item disabled">
-                                                    <span class="page-link">Previous</span>
-                                                </li>
-                                            @else
-                                                <li class="page-item">
-                                                    <a class="page-link"
-                                                        href="{{ $contacts->previousPageUrl() }}">Previous</a>
-                                                </li>
-                                            @endif
-
-                                            {{-- Pagination Elements --}}
-                                            @foreach ($contacts->getUrlRange(1, $contacts->lastPage()) as $page => $url)
-                                                <li
-                                                    class="page-item {{ $page == $contacts->currentPage() ? 'active' : '' }}">
-                                                    <a class="page-link"
-                                                        href="{{ $url }}">{{ $page }}</a>
-                                                </li>
-                                            @endforeach
-
-                                            {{-- Next Page Link --}}
-                                            @if ($contacts->hasMorePages())
-                                                <li class="page-item">
-                                                    <a class="page-link" href="{{ $contacts->nextPageUrl() }}">Next</a>
-                                                </li>
-                                            @else
-                                                <li class="page-item disabled">
-                                                    <span class="page-link">Next</span>
-                                                </li>
-                                            @endif
-                                        </ul>
-                                    </nav>
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">Contact Messages</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered mb-0">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th style="width: 5%">#</th>
+                                                <th style="width: 20%">Name</th>
+                                                <th style="width: 25%">Email</th>
+                                                <th>Message</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($contacts as $contact)
+                                                <tr>
+                                                    <td>{{ $contact->id }}</td>
+                                                    <td>{{ $contact->name }}</td>
+                                                    <td>{{ $contact->email }}</td>
+                                                    <td>{{ $contact->message }}</td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="4" class="text-center text-muted">No messages found.
+                                                    </td>
+                                                </tr>
+                                            @endforelse
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
 
+                            @if ($contacts->hasPages())
+                                <div class="card-footer d-flex justify-content-between align-items-center flex-wrap">
+                                    <div class="small text-muted mb-2 mb-md-0">
+                                        Showing {{ $contacts->firstItem() }} to {{ $contacts->lastItem() }} of
+                                        {{ $contacts->total() }} results
+                                    </div>
+                                    <div>
+                                        {{ $contacts->links('pagination::bootstrap-4') }}
+                                    </div>
+                                </div>
+                            @endif
+                        </div>
 
-                        </table>
 
 
 
